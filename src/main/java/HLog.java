@@ -10,6 +10,7 @@ import static java.time.temporal.ChronoField.*;
 import static java.time.temporal.ChronoField.NANO_OF_SECOND;
 
 public class HLog {
+    private static final char H_LOG_REGEX = '$';
 
     private static List<FixedPart> fixedParts;
     private static LinkedList<String> message;
@@ -147,7 +148,7 @@ public class HLog {
         int max = m.length();
 
         while(i < max) {
-            int n = m.indexOf("-", i);
+            int n = m.indexOf(H_LOG_REGEX, i);
             if (n < 0) {
                 break;
             } else {
